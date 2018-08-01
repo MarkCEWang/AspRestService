@@ -1,0 +1,10 @@
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.dll.config
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.dll
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EmployeeDataAccess.pdb
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EntityFramework.dll
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EntityFramework.SqlServer.dll
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EntityFramework.xml
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\bin\Debug\EntityFramework.SqlServer.xml
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.csprojResolveAssemblyReference.cache
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.dll
+\\amz-pv-fs02\userdata$\wangm\Documents\Visual Studio 2015\Projects\EmployeeService\EmployeeDataAccess\obj\Debug\EmployeeDataAccess.pdb
