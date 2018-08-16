@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="database_for_practiceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CourseTable">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CourseName" Type="nvarchar(max)" />
+    <Property Name="InstructorID" Type="int" />
+    <Property Name="Instructor" Type="nvarchar(max)" />
+    <Property Name="StudentIdList" Type="nvarchar(max)" />
+    <Property Name="Schedule" Type="nvarchar(max)" />
+    <Property Name="LengthOfCourse" Type="int" />
+  </EntityType>
   <EntityType Name="EmployeeData">
     <Key>
       <PropertyRef Name="ID" />
@@ -10,7 +22,24 @@
     <Property Name="Gender" Type="nvarchar" MaxLength="50" />
     <Property Name="Salary" Type="int" />
   </EntityType>
+  <Association Name="FK__CourseTab__Instr__46E78A0C">
+    <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="0..1" />
+    <End Role="CourseTable" Type="Self.CourseTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeData">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CourseTable">
+        <PropertyRef Name="InstructorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="database_for_practiceModelStoreContainer">
+    <EntitySet Name="CourseTable" EntityType="Self.CourseTable" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="EmployeeData" EntityType="Self.EmployeeData" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__CourseTab__Instr__46E78A0C" Association="Self.FK__CourseTab__Instr__46E78A0C">
+      <End Role="EmployeeData" EntitySet="EmployeeData" />
+      <End Role="CourseTable" EntitySet="CourseTable" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

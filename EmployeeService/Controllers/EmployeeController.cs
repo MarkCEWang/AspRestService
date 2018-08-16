@@ -8,6 +8,7 @@ using System.Web.Http;
 
 namespace EmployeeService.Controllers
 {
+    [RoutePrefix("api/Employee")]
     public class EmployeeController : ApiController
     {
         // GET: api/Employee
@@ -28,29 +29,51 @@ namespace EmployeeService.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{id:int}/CourseTable")]
+        public IEnumerable<CourseTable> GetCoursesOfEmp(int id)
+        {
+            using (database_for_practiceEntities entities = new database_for_practiceEntities())
+            {
+                return entities.CourseTables.ToList().Where(e => e.InstructorID == id);
+            }
+        }
+
         // POST: api/Employee
-        public void Post([FromBody]EmployeeData value)
+        public EmployeeData Post([FromBody]EmployeeData value)
         {
             using (database_for_practiceEntities entities = new database_for_practiceEntities())
             {
                 entities.EmployeeDatas.Add(value);
                 entities.SaveChanges();
+                return value;
             }
         }
 
         // PUT: api/Employee/5
-        public void Put(int id, [FromBody]EmployeeData value)
+        public EmployeeData Put(int id, [FromBody]EmployeeData value)
         {
             using (database_for_practiceEntities entities = new database_for_practiceEntities())
             {
                 var curEntity = entities.EmployeeDatas.ToList().FirstOrDefault(e => e.ID == id);
 
-                curEntity.FirstName = value.FirstName;
-                curEntity.LastName = value.LastName;
-                curEntity.Gender = value.Gender;
-                curEntity.Salary = value.Salary;
+                var courseEntity = entities.CourseTables.ToList().FirstOrDefault(e => e.InstructorID == id);
 
-                entities.SaveChanges();
+                CourseController cc = new CourseController();
+
+                if (curEntity != null)
+                {
+                    curEntity.FirstName = value.FirstName;
+                    curEntity.LastName = value.LastName;
+                    curEntity.Gender = value.Gender;
+                    curEntity.Salary = value.Salary;
+                    cc.changePartial(courseEntity.CourseID, value.FirstName + value.LastName[0]);
+
+                    entities.SaveChanges();
+                    return value;
+                }
+                return null;
+                
             }
         }
 

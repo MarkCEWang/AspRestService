@@ -12,19 +12,16 @@ namespace EmployeeDataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class EmployeeData
+    public partial class CourseTable
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public EmployeeData()
-        {
-            this.CourseTables = new HashSet<CourseTable>();
-        }
-
-        public int ID { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Gender { get; set; }
-        public Nullable<int> Salary { get; set; }
-        public HashSet<CourseTable> CourseTables { get; private set; }
+        public int CourseID { get; set; }
+        public string CourseName { get; set; }
+        public Nullable<int> InstructorID { get; set; }
+        public string Instructor { get; set; }
+        public string StudentIdList { get; set; }
+        public string Schedule { get; set; }
+        public Nullable<int> LengthOfCourse { get; set; }
+        public EmployeeData EmployeeData { get; set; }
     }
 }

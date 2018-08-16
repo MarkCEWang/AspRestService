@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="database_for_practiceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CourseTable">
+    <Key>
+      <PropertyRef Name="CourseID" />
+    </Key>
+    <Property Name="CourseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CourseName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="InstructorID" Type="Int32" />
+    <Property Name="Instructor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="StudentIdList" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Schedule" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LengthOfCourse" Type="Int32" />
+    <NavigationProperty Name="EmployeeData" Relationship="Self.FK__CourseTab__Instr__46E78A0C" FromRole="CourseTable" ToRole="EmployeeData" />
+  </EntityType>
   <EntityType Name="EmployeeData">
     <Key>
       <PropertyRef Name="ID" />
@@ -9,8 +22,26 @@
     <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Salary" Type="Int32" />
+    <NavigationProperty Name="CourseTables" Relationship="Self.FK__CourseTab__Instr__46E78A0C" FromRole="EmployeeData" ToRole="CourseTable" />
   </EntityType>
+  <Association Name="FK__CourseTab__Instr__46E78A0C">
+    <End Role="EmployeeData" Type="Self.EmployeeData" Multiplicity="0..1" />
+    <End Role="CourseTable" Type="Self.CourseTable" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EmployeeData">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CourseTable">
+        <PropertyRef Name="InstructorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="database_for_practiceEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CourseTables" EntityType="Self.CourseTable" />
     <EntitySet Name="EmployeeDatas" EntityType="Self.EmployeeData" />
+    <AssociationSet Name="FK__CourseTab__Instr__46E78A0C" Association="Self.FK__CourseTab__Instr__46E78A0C">
+      <End Role="EmployeeData" EntitySet="EmployeeDatas" />
+      <End Role="CourseTable" EntitySet="CourseTables" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

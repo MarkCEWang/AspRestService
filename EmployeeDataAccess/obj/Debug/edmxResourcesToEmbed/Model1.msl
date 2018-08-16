@@ -1,6 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="database_for_practiceModelStoreContainer" CdmEntityContainer="database_for_practiceEntities">
+    <EntitySetMapping Name="CourseTables">
+      <EntityTypeMapping TypeName="database_for_practiceModel.CourseTable">
+        <MappingFragment StoreEntitySet="CourseTable">
+          <ScalarProperty Name="CourseID" ColumnName="CourseID" />
+          <ScalarProperty Name="CourseName" ColumnName="CourseName" />
+          <ScalarProperty Name="InstructorID" ColumnName="InstructorID" />
+          <ScalarProperty Name="Instructor" ColumnName="Instructor" />
+          <ScalarProperty Name="StudentIdList" ColumnName="StudentIdList" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="LengthOfCourse" ColumnName="LengthOfCourse" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="EmployeeDatas">
       <EntityTypeMapping TypeName="database_for_practiceModel.EmployeeData">
         <MappingFragment StoreEntitySet="EmployeeData">
